@@ -1,0 +1,745 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{property}{Property}
+
+\title{\textbf{Action: Special Relativity, Electromagnetism, \\ and General Relativity}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Special Relativity}
+
+\subsection{Lorentz Transformations}
+
+The Lorentz transformations relate coordinates between inertial reference frames:
+
+\begin{align}
+x' &= \gamma(x - vt) \\
+t' &= \gamma\left(t - \frac{vx}{c^2}\right)
+\end{align}
+
+where the Lorentz factor is:
+\begin{equation}
+\gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{equation}
+
+\subsection{Spacetime Interval and Metric}
+
+The proper time interval is defined as:
+\begin{equation}
+c^2 d\tau^2 = -ds^2
+\end{equation}
+
+The Minkowski metric (signature convention):
+\begin{equation}
+\eta_{\mu\nu} = \text{diag}(-1, +1, +1, +1)
+\end{equation}
+
+\subsection{Four-Vectors}
+
+\subsubsection{Position Four-Vector}
+\begin{equation}
+\bar{x} = (ct, x, y, z) = (x^0, x^1, x^2, x^3)
+\end{equation}
+
+\subsubsection{Four-Velocity}
+\begin{equation}
+\bar{u} = \frac{d\bar{x}}{d\tau} = \gamma(c, \vec{v})
+\end{equation}
+
+\subsubsection{Four-Momentum}
+\begin{equation}
+\bar{p} = m_0 \bar{u} = \left(\frac{E}{c}, \gamma m_0 \vec{v}\right) \quad \Rightarrow \quad p^0 = \frac{E}{c}
+\end{equation}
+
+\subsubsection{Four-Force}
+\begin{equation}
+\bar{F} = \frac{d\bar{p}}{d\tau}
+\end{equation}
+
+\section{Electromagnetism in Special Relativity}
+
+\subsection{Four-Vectors in Electromagnetism}
+
+\subsubsection{Four-Derivative}
+\begin{equation}
+\partial_\mu = \frac{\partial}{\partial x^\mu} = \left(\frac{1}{c}\frac{\partial}{\partial t}, \frac{\partial}{\partial x^i}\right)
+\end{equation}
+
+This is a Lorentz covariant derivative operator.
+
+\subsubsection{Four-Current}
+\begin{equation}
+J^\mu = (c\rho, \vec{J})
+\end{equation}
+
+The continuity equation:
+\begin{equation}
+\partial_\mu J^\mu = 0
+\end{equation}
+
+\subsubsection{Four-Potential}
+\begin{equation}
+A^\mu = \left(\frac{\phi}{c}, \vec{A}\right)
+\end{equation}
+
+This transforms the same way as the position four-vector $\bar{x}$.
+
+\subsection{Electromagnetic Field Tensor}
+
+The electromagnetic field tensor is an antisymmetric rank-2 tensor:
+
+\begin{equation}
+F^{\mu\nu} = \begin{pmatrix}
+0 & -E_x/c & -E_y/c & -E_z/c \\
+E_x/c & 0 & B_z & -B_y \\
+E_y/c & -B_z & 0 & B_x \\
+E_z/c & B_y & -B_x & 0
+\end{pmatrix}
+\end{equation}
+
+This is also called the Faraday tensor and satisfies:
+\begin{equation}
+F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu
+\end{equation}
+
+\subsection{Lorentz Force}
+
+The relativistic Lorentz force in covariant form:
+\begin{equation}
+f^\mu = q F^{\mu\nu} u_\nu
+\end{equation}
+
+This generalizes the familiar $\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})$.
+
+For non-relativistic velocities where $u \approx (1, \vec{v})$:
+\begin{equation}
+\frac{dp^i}{dt} = q E^i \quad \Rightarrow \quad F_{0i} \propto E_i
+\end{equation}
+
+\subsection{Field Transformations}
+
+Under Lorentz transformation $F' = \Lambda F \Lambda^T$, the electric and magnetic fields transform as:
+
+\textbf{Parallel components (unchanged):}
+\begin{align}
+E'_x &= E_x \\
+B'_x &= B_x
+\end{align}
+
+\textbf{Perpendicular components:}
+\begin{align}
+E'_y &= \gamma(E_y - vB_z) & B'_y &= \gamma\left(B_y + \frac{v}{c^2}E_z\right) \\
+E'_z &= \gamma(E_z + vB_y) & B'_z &= \gamma\left(B_z - \frac{v}{c^2}E_y\right)
+\end{align}
+
+\subsection{Maxwell's Equations in Covariant Form}
+
+Maxwell's equations can be written compactly as:
+\begin{equation}
+\boxed{\partial_\mu F^{\mu\nu} = \mu_0 J^\nu}
+\end{equation}
+
+This encodes both Gauss's law and Ampère-Maxwell law.
+
+\subsection{Gauge Invariance}
+
+The electromagnetic action is invariant under gauge transformations:
+\begin{equation}
+A_\mu \longrightarrow A_\mu + \partial_\mu \Lambda(x)
+\end{equation}
+
+where $\Lambda(x)$ is an arbitrary scalar function.
+
+\subsection{Action for Electromagnetism}
+
+The unique action that is both gauge and Lorentz invariant, and produces Maxwell's equations:
+
+\begin{equation}
+S_{EM} = \int d^4x \left( -\frac{1}{4\mu_0} F_{\mu\nu}F^{\mu\nu} - A_\mu J^\mu \right)
+\end{equation}
+
+The Lagrangian density is:
+\begin{equation}
+\mathcal{L}_{EM} = -\frac{1}{4\mu_0} F_{\mu\nu}F^{\mu\nu} - A_\mu J^\mu
+\end{equation}
+
+\section{General Relativity Foundations}
+
+\subsection{Motivation for Curved Spacetime}
+
+In General Relativity, the motion of particles under gravity is determined by the metric $g_{\mu\nu}$. To find the metric for a given observer, we need field equations for $g_{\mu\nu}$.
+
+Maxwell's theory of electromagnetism served as the guiding principle, as there is no direct Newtonian analog for the metric tensor.
+
+\subsection{Invariant Volume Element}
+
+\subsubsection{Derivation}
+
+Consider a volume element transformation. We demand that the volume element be invariant:
+\begin{equation}
+dV = dV'
+\end{equation}
+
+In terms of the Levi-Civita symbol:
+\begin{equation}
+J(\bar{x}) \frac{1}{2!} \epsilon_{\alpha\beta} dx^\alpha dx^\beta = J(\bar{x}') \frac{1}{2!} \epsilon_{\mu\nu} dx'^\mu dx'^\nu
+\end{equation}
+
+where the permutation factor $(-1)^P$ accounts for cyclic ($P=0$) and anti-cyclic ($P=1$) permutations.
+
+Under coordinate transformation $dx'^\mu = \Lambda^\mu_\alpha dx^\alpha$:
+\begin{equation}
+J(\bar{x}) = \det(\Lambda^\mu_\alpha)
+\end{equation}
+
+This is the Jacobian of the coordinate transformation.
+
+\subsubsection{Connection to the Metric}
+
+The metric transforms as:
+\begin{equation}
+g'_{\mu\nu} = (\Lambda^{-1})^\alpha_\mu (\Lambda^{-1})^\beta_\nu g_{\alpha\beta}
+\end{equation}
+
+Taking determinants:
+\begin{equation}
+\det(g') = (\det \Lambda)^{-2} \det(g)
+\end{equation}
+
+For Minkowski space $\eta_{\mu\nu}$ with $\det(\eta) = -1$:
+\begin{equation}
+\det(g) = (\det \Lambda)^2 \det(\eta_{\mu\nu})
+\end{equation}
+
+\subsubsection{General Volume Element}
+
+The invariant volume element in $D$ dimensions is:
+\begin{equation}
+\boxed{dV = \sqrt{|g|} \, d^Dx}
+\end{equation}
+
+where $g = \det(g_{\mu\nu})$ and we use $\sqrt{-g}$ for Lorentzian signatures.
+
+\textbf{Examples:}
+
+\begin{itemize}
+\item \textbf{2D Polar Coordinates:} $(x,y) \to (r,\theta)$
+\begin{equation}
+g_{\mu\nu} = \begin{pmatrix} 1 & 0 \\ 0 & r^2 \end{pmatrix}, \quad \sqrt{|g|} = r, \quad dV = r \, dr \, d\theta
+\end{equation}
+
+\item \textbf{3D Spherical Coordinates:}
+\begin{equation}
+ds^2 = dr^2 + r^2 d\theta^2 + r^2\sin^2\theta \, d\phi^2
+\end{equation}
+\begin{equation}
+g_{\mu\nu} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & r^2 & 0 \\ 0 & 0 & r^2\sin^2\theta \end{pmatrix}, \quad \sqrt{|g|} = r^2\sin\theta
+\end{equation}
+\begin{equation}
+dV = r^2\sin\theta \, dr \, d\theta \, d\phi
+\end{equation}
+\end{itemize}
+
+\subsection{Levi-Civita Symbol}
+
+The totally antisymmetric Levi-Civita symbol is defined as:
+\begin{align}
+\epsilon_{ijk} &= +1 \quad \text{for cyclic permutations of } (1,2,3) \\
+\epsilon_{ijk} &= -1 \quad \text{for anti-cyclic permutations} \\
+\epsilon_{ijk} &= 0 \quad \text{if any two indices are equal}
+\end{align}
+
+\textbf{Application to determinants:}
+
+For a $2\times2$ matrix:
+\begin{equation}
+\det(A) = \frac{1}{2!} \epsilon_{\mu\nu} \epsilon_{\alpha\beta} a^{\mu\alpha} a^{\nu\beta}
+\end{equation}
+
+For an $n\times n$ matrix:
+\begin{equation}
+\det(A) = \frac{1}{n!} \epsilon_{\mu_1 \cdots \mu_n} \epsilon_{\alpha_1 \cdots \alpha_n} a^{\mu_1\alpha_1} \cdots a^{\mu_n\alpha_n}
+\end{equation}
+
+\section{Covariant Derivatives}
+
+\subsection{Motivation}
+
+Consider whether $\partial_\mu g_{\alpha\beta}$ transforms as a tensor.
+
+For a scalar field $\phi$:
+\begin{equation}
+\phi(x) \to \phi'(x') = \phi(x)
+\end{equation}
+
+The derivative of a scalar \emph{is} a tensor:
+\begin{equation}
+\partial'_\mu \phi'(x') = (\Lambda^{-1})^\alpha_\mu \partial_\alpha \phi(x)
+\end{equation}
+
+Therefore $\partial_\mu \phi(x)$ is a rank (0,1) tensor.
+
+However, for a contravariant vector $V^\rho$ with $V'^\rho = \Lambda^\rho_\beta V^\beta$:
+\begin{equation}
+\partial_\mu(V'^\rho) = (\Lambda^{-1})^\alpha_\mu \partial_\alpha(\Lambda^\rho_\beta V^\beta)
+\end{equation}
+\begin{equation}
+= (\Lambda^{-1})^\alpha_\mu \Lambda^\rho_\beta (\partial_\alpha V^\beta) + (\Lambda^{-1})^\alpha_\mu (\partial_\alpha \Lambda^\rho_\beta) V^\beta
+\end{equation}
+
+Since $\Lambda^\rho_\beta = \Lambda^\rho_\beta(x)$ in general coordinate transformations, the second term does not vanish, so $\partial_\mu V^\rho$ does \textbf{not} transform as a rank (1,1) tensor.
+
+We need a new derivative operator $\nabla_\mu$ such that $\nabla_\mu V^\rho$ transforms properly as a tensor.
+
+\subsection{Definition of Covariant Derivative}
+
+We demand that:
+\begin{equation}
+\nabla'_\nu V'^\rho = (\Lambda^{-1})^\alpha_\nu \Lambda^\rho_\beta (\nabla_\alpha V^\beta)
+\end{equation}
+
+In a locally inertial frame, the covariant derivative reduces to the ordinary derivative:
+\begin{equation}
+\nabla_\mu = \partial_\mu \quad \text{(in locally inertial frame)}
+\end{equation}
+
+Through careful analysis of the transformation properties, we define:
+
+\begin{equation}
+\boxed{\nabla_\alpha V^\rho = \partial_\alpha V^\rho + \Gamma^\rho_{\alpha\beta} V^\beta}
+\end{equation}
+
+where $\Gamma^\rho_{\alpha\beta}$ are the \textbf{Christoffel symbols} or \textbf{connection coefficients}.
+
+For covariant vectors:
+\begin{equation}
+\boxed{\nabla_\alpha V_\beta = \partial_\alpha V_\beta - \Gamma^\rho_{\alpha\beta} V_\rho}
+\end{equation}
+
+For scalars:
+\begin{equation}
+\nabla_\mu \phi = \partial_\mu \phi
+\end{equation}
+
+For a mixed tensor $T^\alpha_\beta$:
+\begin{equation}
+\nabla_\mu T^\alpha_\beta = \partial_\mu T^\alpha_\beta + \Gamma^\alpha_{\mu\rho} T^\rho_\beta - \Gamma^\rho_{\mu\beta} T^\alpha_\rho
+\end{equation}
+
+\textbf{General Rule:} The covariant derivative transforms a tensor of rank $(p,q)$ to a tensor of rank $(p, q+1)$.
+
+\subsection{Metric Compatibility}
+
+A fundamental requirement is that the metric is covariantly conserved:
+\begin{equation}
+\boxed{\nabla_\mu g_{\alpha\beta} = 0}
+\end{equation}
+
+Substituting the definition:
+\begin{equation}
+\nabla_\mu g_{\alpha\beta} = \partial_\mu g_{\alpha\beta} - \Gamma^\rho_{\mu\alpha} g_{\rho\beta} - \Gamma^\rho_{\mu\beta} g_{\alpha\rho} = 0
+\end{equation}
+
+By cyclic permutation of indices and solving, we obtain:
+
+\begin{equation}
+\boxed{\Gamma^\rho_{\mu\alpha} = \frac{1}{2} g^{\rho\sigma} \left[\partial_\mu g_{\sigma\alpha} + \partial_\alpha g_{\mu\sigma} - \partial_\sigma g_{\mu\alpha}\right]}
+\end{equation}
+
+This is the fundamental formula for Christoffel symbols in terms of metric derivatives.
+
+\subsection{Useful Identities}
+
+\begin{align}
+\Gamma^\alpha_{\mu\alpha} &= \frac{1}{\sqrt{-g}} \partial_\mu (\sqrt{-g}) \\
+\nabla_\mu V^\mu &= \frac{1}{\sqrt{-g}} \partial_\mu (\sqrt{-g} V^\mu) \quad \text{(covariant divergence)}
+\end{align}
+
+\subsection{Leibniz Rule}
+
+The covariant derivative satisfies the Leibniz (product) rule:
+\begin{align}
+\nabla_\mu (\phi V^\nu) &= (\nabla_\mu \phi) V^\nu + \phi \nabla_\mu V^\nu \\
+\nabla_\mu (V^\alpha W_\beta) &= (\nabla_\mu V^\alpha) W_\beta + V^\alpha (\nabla_\mu W_\beta)
+\end{align}
+
+\section{Curvature: The Riemann Tensor}
+
+\subsection{Commutator of Covariant Derivatives}
+
+For any vector $V^\rho$, consider the commutator:
+\begin{equation}
+[\nabla_\mu, \nabla_\nu] V^\rho = \nabla_\mu (\nabla_\nu V^\rho) - \nabla_\nu (\nabla_\mu V^\rho)
+\end{equation}
+
+After lengthy calculation:
+\begin{equation}
+[\nabla_\mu, \nabla_\nu] V^\rho = R^\rho_{\sigma\mu\nu} V^\sigma
+\end{equation}
+
+where the \textbf{Riemann curvature tensor} is defined as:
+
+\begin{equation}
+\boxed{R^\rho_{\sigma\mu\nu} = \partial_\mu \Gamma^\rho_{\nu\sigma} - \partial_\nu \Gamma^\rho_{\mu\sigma} + \Gamma^\rho_{\mu\lambda} \Gamma^\lambda_{\nu\sigma} - \Gamma^\rho_{\nu\lambda} \Gamma^\lambda_{\mu\sigma}}
+\end{equation}
+
+This tensor contains at most two derivatives of the metric and measures the curvature of spacetime.
+
+\subsection{Properties of the Riemann Tensor}
+
+\begin{property}[Antisymmetry in last two indices]
+\begin{equation}
+R^\rho_{\sigma\mu\nu} = -R^\rho_{\sigma\nu\mu}
+\end{equation}
+\end{property}
+
+\begin{property}[Antisymmetry in first pair]
+With all indices lowered: $R_{\rho\sigma\mu\nu} = g_{\rho\lambda} R^\lambda_{\sigma\mu\nu}$
+\begin{equation}
+R_{\rho\sigma\mu\nu} = -R_{\sigma\rho\mu\nu}
+\end{equation}
+\end{property}
+
+\textbf{Proof of Property 2:}
+Using metric compatibility:
+\begin{equation}
+0 = [\nabla_\mu, \nabla_\nu] g_{\alpha\beta} = [\nabla_\mu, \nabla_\nu] (V_\alpha W_\beta)
+\end{equation}
+
+This leads to:
+\begin{equation}
+R_{\alpha\beta\mu\nu} + R_{\beta\alpha\mu\nu} = 0
+\end{equation}
+
+For covariant vectors:
+\begin{equation}
+[\nabla_\mu, \nabla_\nu] V_\rho = -R_{\rho\sigma\mu\nu} V^\sigma
+\end{equation}
+
+\textbf{Note:} For Minkowski spacetime, $\Gamma^\mu_{\alpha\beta} = 0$ everywhere, so $R^\rho_{\sigma\mu\nu} = 0$.
+
+\subsection{Ricci Tensor and Ricci Scalar}
+
+\begin{definition}[Ricci Tensor]
+The Ricci tensor is obtained by contracting the first and third indices:
+\begin{equation}
+R_{\mu\nu} = R^\rho_{\mu\rho\nu} = g^{\alpha\beta} R_{\alpha\mu\beta\nu}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Ricci Scalar]
+The Ricci scalar (or scalar curvature) is:
+\begin{equation}
+R = g^{\mu\nu} R_{\mu\nu}
+\end{equation}
+\end{definition}
+
+The Ricci scalar is a scalar quantity with at most two derivatives of the metric. It plays a central role in the Einstein-Hilbert action.
+
+\section{The Einstein-Hilbert Action}
+
+\subsection{Requirements for Gravitational Action}
+
+The action for the metric $g_{\mu\nu}$ must satisfy:
+
+\begin{enumerate}
+\item It should be a scalar under general coordinate transformations
+\item It should contain at most 2 derivatives of $g_{\mu\nu}$ (to match Maxwell's theory)
+\item It should reduce to Newtonian gravity in the appropriate limit
+\end{enumerate}
+
+General form:
+\begin{equation}
+S_G = \int d^4x \sqrt{-g} \, f(g_{\mu\nu}, \partial_\alpha g_{\mu\nu}, \partial_\alpha\partial_\beta g_{\mu\nu})
+\end{equation}
+
+The function $f$ must be a scalar. The only scalar with at most two derivatives is the Ricci scalar $R$ (and constants).
+
+\subsection{Dimensional Analysis}
+
+The action has dimensions:
+\begin{equation}
+[S] = [ML^2T^{-1}]
+\end{equation}
+
+The metric is dimensionless: $[g_{\mu\nu}] = 1$
+
+Newton's constant: $[G] = M^{-1}L^3T^{-2}$
+
+The Ricci scalar: $[R] = L^{-2}$
+
+For the action to have correct dimensions:
+\begin{equation}
+[\alpha] = \frac{[S]}{L^4 [R]} = \frac{ML^2T^{-1}}{L^4 \cdot L^{-2}} = \frac{ML^2T^{-1}}{L^2} = MT^{-1} = \frac{c^3}{G}
+\end{equation}
+
+\subsection{The Einstein-Hilbert Action}
+
+Including a cosmological constant term:
+
+\begin{equation}
+\boxed{S_{EH} = \frac{c^3}{16\pi G} \int d^4x \sqrt{-g} \, (R - 2\lambda)}
+\end{equation}
+
+where:
+\begin{itemize}
+\item $\lambda$ is the \textbf{cosmological constant}
+\item The factor $16\pi$ is chosen to reproduce Newtonian gravity in the weak-field limit
+\item This action contains at most 2 derivatives of the metric
+\end{itemize}
+
+Setting $c = 1$ (natural units), we often write:
+\begin{equation}
+S_{EH} = \frac{1}{16\pi G} \int d^4x \sqrt{-g} \, R
+\end{equation}
+
+Or with convenient normalization:
+\begin{equation}
+S_{EH} = \frac{1}{2} \int d^4x \sqrt{-g} \, R
+\end{equation}
+
+\section{Scalar Field Theory in Curved Spacetime}
+
+\subsection{Action for Minimally Coupled Scalar Field}
+
+\subsubsection{Flat Spacetime Action}
+
+In flat Minkowski spacetime, the action for a real scalar field is:
+\begin{equation}
+S_\phi^{\text{flat}} = \int d^4x \left[ \frac{1}{2} \partial^\mu \phi \partial_\mu \phi - V(\phi) \right]
+\end{equation}
+
+Requirements for the Lagrangian density:
+\begin{itemize}
+\item $\mathcal{L}$ must be a scalar
+\item At most two derivatives in equations of motion
+\item No explicit coordinate dependence (translational invariance)
+\end{itemize}
+
+General form:
+\begin{equation}
+\mathcal{L} = A(\phi)\partial_\mu \phi \partial^\mu \phi - U(\phi)
+\end{equation}
+
+By field redefinition $\chi(\phi) = \int^\phi d\varphi \sqrt{2A(\varphi)}$, this can always be brought to canonical form:
+\begin{equation}
+\mathcal{L} = \frac{1}{2} \partial_\mu \chi \partial^\mu \chi - V(\chi)
+\end{equation}
+
+\subsubsection{Curved Spacetime Action}
+
+To promote the scalar field action to curved spacetime (minimal coupling):
+
+\begin{itemize}
+\item $\partial^\mu \phi \partial_\mu \phi \to g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi$
+\item $d^4x \to \sqrt{-g} \, d^4x$
+\item $\partial_\mu \to \nabla_\mu$ (though for scalars this makes no difference)
+\end{itemize}
+
+The curved spacetime action becomes:
+\begin{equation}
+\boxed{S_\phi = \int d^4x \sqrt{-g} \left[ \frac{1}{2} g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - V(\phi) \right]}
+\end{equation}
+
+\subsection{Equations of Motion}
+
+Varying with respect to $\phi$ and setting $\delta S = 0$:
+
+\begin{equation}
+\delta S_\phi = \int d^4x \sqrt{-g} \left[ g^{\mu\nu} (\partial_\mu \phi) \partial_\nu (\delta\phi) - V_{,\phi} \delta\phi \right]
+\end{equation}
+
+Integrating by parts and requiring $\delta S_\phi = 0$ for arbitrary $\delta\phi$:
+
+\begin{equation}
+\boxed{\Box_g \phi + V_{,\phi} = 0}
+\end{equation}
+
+where the curved spacetime d'Alembertian operator is:
+\begin{equation}
+\Box_g = \frac{1}{\sqrt{-g}} \partial_\mu \left(\sqrt{-g} \, g^{\mu\nu} \partial_\nu\right)
+\end{equation}
+
+This is the \textbf{covariant Klein-Gordon equation} in curved spacetime.
+
+\subsection{Full Action: Gravity + Matter}
+
+The complete action coupling gravity to a scalar field:
+
+\begin{equation}
+\boxed{S = S_{EH} + S_\phi = \int d^4x \sqrt{-g} \left[ \frac{1}{2} R + \frac{1}{2} g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - V(\phi) \right]}
+\end{equation}
+
+\section{Scalar Field Cosmology}
+
+\subsection{FRW Metric}
+
+The Friedmann-Robertson-Walker (FRW) metric for a homogeneous and isotropic universe:
+
+\begin{equation}
+ds^2 = -dt^2 + a^2(t) \left[ dr^2 + r^2 d\Omega^2 \right] = -dt^2 + a^2(t) d\vec{x}^2
+\end{equation}
+
+The metric components:
+\begin{equation}
+g_{\mu\nu} = \text{diag}(-1, a^2, a^2, a^2)
+\end{equation}
+
+The determinant:
+\begin{equation}
+g = \det(g_{\mu\nu}) = -a^6 \quad \Rightarrow \quad \sqrt{-g} = a^3
+\end{equation}
+
+\subsection{Friedmann-Klein-Gordon Equation}
+
+For a homogeneous scalar field $\phi = \phi(t)$:
+\begin{equation}
+g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi = -\dot{\phi}^2
+\end{equation}
+
+Computing the d'Alembertian:
+\begin{equation}
+\Box_g \phi = \frac{1}{a^3} \partial_t (a^3 \times (-\dot{\phi})) = -\ddot{\phi} - 3\frac{\dot{a}}{a}\dot{\phi}
+\end{equation}
+
+The Klein-Gordon equation $\Box_g \phi + V_{,\phi} = 0$ becomes:
+
+\begin{equation}
+\boxed{\ddot{\phi} + 3H\dot{\phi} + V_{,\phi} = 0}
+\end{equation}
+
+where $H = \dot{a}/a$ is the Hubble parameter.
+
+\textbf{Physical interpretation:}
+\begin{itemize}
+\item $\ddot{\phi}$ : acceleration of the field
+\item $3H\dot{\phi}$ : Hubble friction (damping due to cosmological expansion)
+\item $V_{,\phi}$ : restoring force from potential gradient
+\end{itemize}
+
+\subsection{Stress-Energy Tensor for Scalar Field}
+
+The stress-energy tensor is obtained by varying the matter action with respect to the metric:
+\begin{equation}
+T_{\mu\nu} = \frac{-2}{\sqrt{-g}} \frac{\delta S_\phi}{\delta g^{\mu\nu}} = \partial_\mu \phi \partial_\nu \phi - g_{\mu\nu} \left( \frac{1}{2} \partial^\sigma \phi \partial_\sigma \phi - V(\phi) \right)
+\end{equation}
+
+For a homogeneous field in FRW cosmology, this takes the form of a perfect fluid:
+
+\textbf{Energy density:}
+\begin{equation}
+\rho_\phi = \frac{1}{2} \dot{\phi}^2 + V(\phi)
+\end{equation}
+
+\textbf{Pressure:}
+\begin{equation}
+P_\phi = \frac{1}{2} \dot{\phi}^2 - V(\phi)
+\end{equation}
+
+\textbf{Equation of state parameter:}
+\begin{equation}
+w_\phi = \frac{P_\phi}{\rho_\phi} = \frac{\frac{1}{2}\dot{\phi}^2 - V}{\frac{1}{2}\dot{\phi}^2 + V}
+\end{equation}
+
+\subsection{Inflationary Scenarios}
+
+When the potential energy dominates ($V \gg \frac{1}{2}\dot{\phi}^2$):
+\begin{itemize}
+\item $w_\phi < 0$ : negative pressure
+\item $w_\phi < -\frac{1}{3}$ : accelerated expansion
+\end{itemize}
+
+This provides a mechanism for cosmological inflation.
+
+\subsection{Friedmann Equations}
+
+The dynamics of the scalar field coupled to gravity are governed by:
+
+\begin{align}
+\ddot{\phi} + 3H\dot{\phi} + V_{,\phi} &= 0 \quad \text{(Klein-Gordon)} \\
+H^2 &= \frac{1}{3} \left( \frac{1}{2}\dot{\phi}^2 + V(\phi) \right) \quad \text{(Friedmann, assuming $k=0$)}
+\end{align}
+
+These equations describe the evolution of a homogeneous scalar field in an expanding FRW universe (flat spatial sections, $k=0$).
+
+\section{Maxwell's Equations in Curved Spacetime}
+
+\subsection{Covariant Form}
+
+The Maxwell equations in curved spacetime can be written using the covariant divergence:
+
+\begin{equation}
+\boxed{\nabla_\mu F^{\mu\nu} = \mu_0 J^\nu}
+\end{equation}
+
+where the covariant divergence is:
+\begin{equation}
+\nabla_\mu F^{\mu\nu} = \frac{1}{\sqrt{-g}} \partial_\mu \left(\sqrt{-g} \, F^{\mu\nu}\right)
+\end{equation}
+
+Explicitly:
+\begin{equation}
+\partial_\mu \left(\sqrt{-g} \, F^{\mu\nu}\right) = \sqrt{-g} \, \mu_0 J^\nu
+\end{equation}
+
+In flat spacetime ($\sqrt{-g} = 1$), this reduces to:
+\begin{equation}
+\partial_\mu F^{\mu\nu} = \mu_0 J^\nu
+\end{equation}
+
+\subsection{Important Note on Field Tensor}
+
+The electromagnetic field tensor is defined as:
+\begin{equation}
+F_{\mu\nu} = \nabla_\mu A_\nu - \nabla_\nu A_\mu = \partial_\mu A_\nu - \partial_\nu A_\mu
+\end{equation}
+
+The Christoffel symbols cancel in the antisymmetric combination, so the covariant and ordinary derivatives give the same result for $F_{\mu\nu}$.
+
+\section{Summary of Key Results}
+
+\subsection{Special Relativity}
+\begin{itemize}
+\item Lorentz transformations with $\gamma = (1-v^2/c^2)^{-1/2}$
+\item Four-vectors: position, velocity, momentum, force
+\item Electromagnetic field tensor $F^{\mu\nu}$ and covariant Maxwell equations
+\item Gauge invariance and electromagnetic action
+\end{itemize}
+
+\subsection{General Relativity}
+\begin{itemize}
+\item Invariant volume element: $dV = \sqrt{-g} \, d^4x$
+\item Covariant derivative with Christoffel symbols
+\item Metric compatibility: $\nabla_\mu g_{\alpha\beta} = 0$
+\item Riemann curvature tensor measures spacetime curvature
+\item Einstein-Hilbert action: $S_{EH} = \frac{c^3}{16\pi G} \int d^4x \sqrt{-g} (R - 2\lambda)$
+\end{itemize}
+
+\subsection{Scalar Field Cosmology}
+\begin{itemize}
+\item Minimally coupled scalar field action in curved spacetime
+\item Covariant Klein-Gordon equation
+\item Friedmann-Klein-Gordon equation for homogeneous fields
+\item Scalar field as perfect fluid with equation of state parameter $w_\phi$
+\item Mechanism for inflation when potential dominates
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,181 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{float}
+
+
+% --- Header/Footer Setup ---
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{The Discovery and Confirmation of Dark Matter}}
+\rhead{From Zwicky to Rubin}
+\cfoot{\thepage}
+
+% --- Title Section Info ---
+\title{\textbf{The Discovery and Confirmation of Dark Matter} \\ 
+\large \textit{From Fritz Zwicky's 1933 Virial Theorem Analysis to Vera Rubin's Galaxy Rotation Curves}}
+\author{\textbf{Raj Gaurav Tripathi(22MS215)} \\ \textbf{Subject:} PH4218: Cosmology}
+\date{January 18, 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\hrule
+\vspace{1em}
+
+\section{Introduction}
+ This report covers two pivotal moments in the discovery of dark matter. In 1933, Fritz Zwicky applied the virial theorem to the Coma Cluster and discovered a massive discrepancy between visible mass and gravitational mass, providing the first evidence for "dunkle Materie" (dark matter). Four decades later, in the 1970s, Vera Rubin and Kent Ford measured the rotation curves of spiral galaxies and found that stars at the galactic edges moved far too fast for their visible matter content, confirming Zwicky's hypothesis and establishing dark matter as a fundamental component of the universe.
+
+
+\vspace{1em}
+\hrule
+\vspace{2em}
+
+\newpage
+% --- Part I: Zwicky's Discovery ---
+\section{Part I: Evidence for Dark Matter (1933)}
+
+\subsection{Introduction: The Coma Cluster}
+The Coma Cluster (Abell 1656) is a rich cluster containing over 1,000 identified galaxies located approximately 320 million light-years from Earth. Its immense size and apparent stability allowed Swiss-American astronomer Fritz Zwicky to treat it as a self-gravitating system in equilibrium, making it a perfect candidate for applying statistical mechanics to astrophysics.
+
+Zwicky's goal was to estimate the total mass of the cluster and compare it to the mass estimated based on the light emitted by its constituent galaxies. What he discovered would fundamentally alter our understanding of the universe.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Coma_cluster_from_Estonia.jpg}
+    \caption{Coma cluster in the constellation Coma Berenices.(Source-Wikipedia)}
+    \label{fig:placeholder}
+\end{figure}
+
+
+\subsection{Theoretical Framework: The Virial Theorem}
+To "weigh" the cluster, Zwicky relied on the Virial Theorem, which relates the average kinetic energy of a stable system to its average potential energy.
+
+\subsubsection{Mathematical Derivation}
+We model the cluster as a system of $N$ point masses (galaxies) with mass $m_i$ and position $\mathbf{r}_i$, interacting via mutual gravity.
+
+\paragraph{The Moment of Inertia.} 
+We define a scalar quantity $I$ to represent the distribution of mass relative to the cluster's center:
+\begin{equation}
+    I = \sum_{i=1}^{N} m_i \mathbf{r}_i \cdot \mathbf{r}_i
+\end{equation}
+
+\paragraph{Time Evolution.}
+To understand the motion, we differentiate $I$ twice with respect to time (Lagrange's Identity):
+\begin{equation}
+    \frac{1}{2} \frac{d^2I}{dt^2} = \sum_{i=1}^{N} m_i (\dot{\mathbf{r}}_i \cdot \dot{\mathbf{r}}_i) + \sum_{i=1}^{N} m_i (\mathbf{r}_i \cdot \ddot{\mathbf{r}}_i)
+\end{equation}
+
+\paragraph{Identifying Energy Terms.}
+The first term on the right is twice the total \textbf{Kinetic Energy ($T$)}, since $T = \frac{1}{2}mv^2$. The second term involves the force on the galaxies ($\mathbf{F}_i = m_i \ddot{\mathbf{r}}_i$). This is the \textbf{Virial of Clausius ($\mathcal{W}$)}:
+\begin{equation}
+    \mathcal{W} = \sum_{i=1}^{N} \mathbf{F}_i \cdot \mathbf{r}_i
+\end{equation}
+
+\paragraph{The Gravitational Potential.}
+For a system bound by gravity (an inverse-square force), the Virial $\mathcal{W}$ is directly related to the total gravitational \textbf{Potential Energy ($V$)} by the relation $\mathcal{W} = V$. Substituting these into our equation:
+\begin{equation}
+    \frac{1}{2} \frac{d^2I}{dt^2} = 2T + V
+\end{equation}
+
+\paragraph{The Stability Assumption.}
+Zwicky assumed the Coma Cluster was in \textbf{equilibrium}. Therefore, the time-averaged change in the mass distribution is zero ($\langle d^2I/dt^2 \rangle = 0$). This yields the \textbf{Virial Theorem}:
+\begin{equation} \label{eq:virial}
+    2 \langle T \rangle + \langle V \rangle = 0
+\end{equation}
+
+\subsection{Zwicky's Application to the Coma Cluster}
+Zwicky used Equation to solve for the total mass ($M$) of the cluster.
+
+\subsubsection{Estimating Energies}
+\begin{itemize}
+    \item \textbf{Kinetic Energy ($T$):} Defined by $T = \frac{1}{2} M \sigma^2$. Zwicky measured the radial velocities (Doppler shifts) and found a velocity dispersion of $\sigma \approx 1,000$ km/s.
+    \item \textbf{Potential Energy ($V$):} Modeling the cluster as a uniform sphere of radius $R$:
+    \begin{equation}
+        V \approx -\frac{3}{5} \frac{GM^2}{R}
+    \end{equation}
+\end{itemize}
+
+\subsubsection{Solving for Mass}
+By setting $2T = -V$, Zwicky derived a formula for the "Gravitational Mass":
+\begin{equation}
+    2 \left( \frac{1}{2} M \sigma^2 \right) = \frac{3}{5} \frac{GM^2}{R} \quad \Rightarrow \quad M \approx \frac{5 R \sigma^2}{3G}
+\end{equation}
+
+\subsection{Results: The Missing Mass Problem}
+Zwicky performed two mass calculations:
+\begin{enumerate}
+    \item \textbf{Luminous Mass ($M_{vis}$):} Estimated from the luminosity of stars.
+    \item \textbf{Gravitational Mass ($M_{vir}$):} Calculated via the Virial Theorem.
+\end{enumerate}
+
+
+The cluster required roughly \textbf{400 times more mass} than observed to remain bound. Zwicky concluded that "dark matter" (\textit{dunkle Materie}) must be present in much greater amounts than luminous matter. However, his findings were largely dismissed for decades as potential measurement errors.
+
+\newpage
+
+% --- Part II: Rubin's Confirmation ---
+\section{Part II: Galaxy Rotation Curves \& Confirmation (1970s)}
+
+\subsection{Introduction: A New Way to See}
+Before the 1970s, measuring the precise rotation speeds of the outer parts of galaxies was notoriously difficult. The light from the edges of spiral galaxies is incredibly faint, making it hard to track the movement of individual stars or gas clouds.
+
+The breakthrough required new technology. \textbf{Kent Ford}, a physicist at the Carnegie Institution, developed a state-of-the-art image-tube spectrograph. This device used modern photoelectric techniques to amplify faint light, allowing astronomers to resolve the spectra of stars at the very dim outskirts of galaxies with unprecedented precision.
+
+Vera Rubin, an astronomer with deep theoretical questions about galactic structure, partnered with Ford to utilize this new instrument at the Kitt Peak National and Lowell Observatories.
+
+\subsection{The Observation: Andromeda (M31)}
+In 1970, Rubin and Ford published their first landmark paper targeting our nearest major neighbor, the \textbf{Andromeda Galaxy (M31)}.
+
+They measured the \textbf{radial velocity} of Hydrogen-alpha (H$\alpha$) emission regions. By analyzing the Doppler shift of the light—redshift as stars move away from Earth, blueshift as they move closer—they could calculate exactly how fast the stars orbiting the galactic center were moving at various distances.
+
+\subsection{The Data: Prediction vs. Reality}
+
+\subsubsection{The Prediction: Keplerian Decline}
+Astronomers expected galaxies to behave like our Solar System. In the Solar System, the Sun contains 99.8\% of the mass. Therefore, planets further away feel less gravity and orbit slower (e.g., Mercury orbits at 47 km/s, while Pluto orbits at only 4.7 km/s).
+
+This "Keplerian" rotation follows the proportionality:
+\begin{equation}
+    v \propto \sqrt{\frac{M}{r}}
+\end{equation}
+Since the visible mass of a galaxy (stars and gas) is concentrated in the bright central bulge, astronomers assumed that orbital velocities ($v$) would decrease as the distance from the center ($r$) increased.
+
+\subsubsection{The Observation: Flat Rotation Curves}
+Rubin's data showed the exact opposite. The rotational velocities \textbf{did not decrease}.
+
+Stars at the galaxy's far edge (50,000+ light-years out) were moving just as fast as stars near the center (approximately 220--250 km/s). When velocity was plotted against distance on a graph, the resulting line was "flat."
+
+This phenomenon became known as the \textbf{flat rotation curve problem}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{gal_rotation_curve.png}
+    \caption{Galaxy Rotation Curve}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection{Interpretation: The Dark Matter Halo}
+The implications of the flat rotation curves were profound. If the visible stars were the only mass present, the outer stars in Andromeda were moving so fast they should have been flung out into intergalactic space; the galaxy should have torn itself apart.
+
+Since the galaxies were clearly stable, Rubin concluded that there must be a tremendous amount of invisible mass extending far beyond the visible edge of the galaxy, providing the gravitational glue to hold the outer stars in orbit.
+
+Rubin proposed that the visible spiral disk is merely a "luminous tracer" embedded in a much larger, spherical \textbf{Dark Matter Halo}. Her calculations suggested that dark matter constituted 5 to 10 times the mass of the visible stars.
+
+% --- Synthesis and Conclusion ---
+
+
+
+
+\end{document}
