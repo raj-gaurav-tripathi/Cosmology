@@ -11,7 +11,7 @@ Currently, the repository includes:
   Foundations of special relativity, electromagnetism in covariant form, General Relativity, curvature, Einstein–Hilbert action, and scalar field theory in curved spacetime.
 
 - 🌌 **Cosmology (Based on Susskind’s Theoretical Minimum)**\
-  Lecture-style notes covering:
+  Lecture notes covering:
 
   - FLRW metric and expanding universe
   - Friedmann equations
